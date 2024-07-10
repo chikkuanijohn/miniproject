@@ -1,45 +1,59 @@
-def add(x, y):
-    return x + y
-
-def subtract(x, y):
-    return x - y
-
-def multiply(x, y):
-    return x * y
-
-def divide(x, y):
-    if y == 0:
-        return "Error! Division by zero."
+#Doctor Appointment Booking System
+appointment_ids = []
+patient_names = []
+appointment_dates = []
+doctor_names = []
+def book_appointment(appointment_id, patient_name, appointment_date, doctor_name):
+    appointment_ids.append(appointment_id)
+    patient_names.append(patient_name)
+    appointment_dates.append(appointment_date)
+    doctor_names.append(doctor_name)
+    print(f"Appointment booked successfully for {patient_name} with Dr. {doctor_name} on {appointment_date}.")
+def cancel_appointment(appointment_id):
+    if appointment_id in appointment_ids:
+        index = appointment_ids.index(appointment_id)
+        del appointment_ids[index]
+        del patient_names[index]
+        del appointment_dates[index]
+        del doctor_names[index]
+        print(f"Appointment with ID {appointment_id} has been cancelled.")
     else:
-        return x / y
+        print(f"No appointment found with ID {appointment_id}.")
+def view_appointments():
+    if appointment_ids:
+        print("All Appointments:")
+        for i in range(len(appointment_ids)):
+            print(f"ID: {appointment_ids[i]}, Patient: {patient_names[i]}, Date: {appointment_dates[i]}, Doctor: {doctor_names[i]}")
+    else:
+        print("No appointments found.")
+while True:
+    print("\nDoctor Appointment Booking System")
+    print("1. Book Appointment")
+    print("2. Cancel Appointment")
+    print("3. View Appointments")
+    print("4. Exit")
+    choice = input("Enter your choice: ")
 
-def calculator():
-    print("Simple Calculator")
-    print("Select operation:")
-    print("1.add \n 2.sub \n 3.mul \n 4.div \n")
-    
+    if choice == '1':
+        appointment_id = input("Enter Appointment ID: ")
+        patient_name = input("Enter Patient Name: ")
+        appointment_date = input("Enter Appointment Date (YYYY-MM-DD): ")
+        doctor_name = input("Enter Doctor Name: ")
+        book_appointment(appointment_id, patient_name, appointment_date, doctor_name)
 
-    while True:
-        choice = input("Enter choice (1/2/3/4) or 'q' to quit: ")
-        
-        if choice in ['1', '2', '3', '4']:
-            num1 = float(input("Enter first number: "))
-            num2 = float(input("Enter second number: "))
+    elif choice == '2':
+        appointment_id = input("Enter Appointment ID to cancel: ")
+        cancel_appointment(appointment_id)
 
-            if choice == '1':
-                print(f"{num1} + {num2} = {add(num1, num2)}")
-            elif choice == '2':
-                print(f"{num1} - {num2} = {subtract(num1, num2)}")
-            elif choice == '3':
-                print(f"{num1} * {num2} = {multiply(num1, num2)}")
-            elif choice == '4':
-                print(f"{num1} / {num2} = {divide(num1, num2)}")
-        elif choice == 'q':
-            print("Exiting the calculator")
-            break
-        else:
-            print("Invalid input. Please enter a valid choice.")
-calculator()
+    elif choice == '3':
+        view_appointments()
+
+    elif choice == '4':
+        print("Exiting the system. Goodbye!")
+        break
+
+    else:
+        print("Invalid choice. Please try again.")
 
                 
     
