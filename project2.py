@@ -13,20 +13,20 @@ def main():
         choice = input("Enter your choice: ")
 
         if choice == '1':
-            username = input("Enter username: ")
+            username = str(input("Enter username: "))
             password = input("Enter password: ")
-            print(user.register_user(username, password))
+            print(username.register_user(username, password))
         
         elif choice == '2':
             username = input("Enter username: ")
             password = input("Enter password: ")
-            print(user.login_user(username, password))
+            print(username.login_user(username, password))
         
         elif choice == '3':
             username = input("Enter username: ")
             origin = input("Enter origin: ")
             destination = input("Enter destination: ")
-            print(booking.book_cab(username, origin, destination))
+            print(username.book_cab(username, origin, destination))
         
         elif choice == '4':
             username = input("Enter username: ")
@@ -49,5 +49,5 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-if __name__ == "_main_":
-    main()
+# if __name__ == "__main__":
+main()
