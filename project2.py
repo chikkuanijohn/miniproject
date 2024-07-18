@@ -1,5 +1,5 @@
-import users
-import booking
+from users import*
+from booking import*
 
 def main():
     while True:
@@ -15,40 +15,39 @@ def main():
         if ch == '1':
             username = input("Enter username: ")
             password = input("Enter password: ")
-            print(users.register_user(username, password))
+            print(register_user(username, password))
         
-        elif ch == '2':
+        elif ch== '2':
             username = input("Enter username: ")
             password = input("Enter password: ")
-            print(users.login_user(username, password))
+            print(login_user(username, password))
         
         elif ch == '3':
             username = input("Enter username: ")
             origin = input("Enter origin: ")
             destination = input("Enter destination: ")
-            print(booking.book_cab(username, origin, destination))
+            print(book_cab(username, origin, destination))
         
         elif ch == '4':
             username = input("Enter username: ")
-            bookings = booking.view_bookings(username)
+            bookings = view_bookings(username)
             if bookings:
-                for b in bookings:
-                    print(f"Booking ID: {b['id']}, Origin: {b['origin']}, Destination: {b['destination']}")
+                # for b in bookings:
+                print(f"Booking ID: {bookings['id']}, Origin: {bookings['origin']}, Destination: {bookings['destination']}")
             else:
                 print("No bookings found.")
         
         elif ch == '5':
             username = input("Enter username: ")
             booking_id = int(input("Enter booking ID: "))
-            print(booking.cancel_booking(username, booking_id))
+            print(cancel_booking(username, booking_id))
         
-        elif ch == '6':
+        elif ch== '6':
             print("Exiting system.")
             break
         
         else:
             print("Invalid choice. Please try again.")
 
-
-# if __name__ == "__main__":
-main()
+if __name__ == "__main__":
+    main()
